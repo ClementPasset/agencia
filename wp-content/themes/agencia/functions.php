@@ -3,6 +3,8 @@ require_once 'inc/supports.php';
 require_once 'inc/assets.php';
 require_once 'inc/appearance.php';
 require_once 'inc/menus.php';
+require_once 'inc/images.php';
+require_once 'inc/query/posts.php';
 
 function agencia_icon(string $name): string
 {
