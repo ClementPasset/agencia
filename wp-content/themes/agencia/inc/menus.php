@@ -3,7 +3,10 @@ add_action('after_setup_theme',function(){
     register_nav_menu('header', __('Main navigation','agencia'));
 });
 
+require_once 'widgets/social.php';
+
 add_action('widgets_init', function(){
+    register_widget(Agencia_Social_Widget::class);
     register_sidebar([
         'id'=>'footer',
         'name'=>__('Footer', 'agencia'),
