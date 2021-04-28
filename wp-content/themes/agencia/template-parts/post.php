@@ -3,7 +3,8 @@
         <?php if (has_post_thumbnail()) : ?>
             <?php the_post_thumbnail() ?>
         <?php else : ?>
-            <img width="250px" height="250px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcum5rPQAG0QKZoysePwAAAABJRU5ErkJggg=="> <?php endif ?>
+            <img width="250px" height="250px" src="https://picsum.photos/id/238/200/200">
+        <?php endif ?>
     </a>
     <div class="news__body">
         <header class="news__header">
