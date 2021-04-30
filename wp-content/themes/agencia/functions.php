@@ -4,7 +4,9 @@ require_once 'inc/assets.php';
 require_once 'inc/appearance.php';
 require_once 'inc/menus.php';
 require_once 'inc/images.php';
+require_once 'inc/styles.php';
 require_once 'inc/query/posts.php';
+require_once 'inc/query/property.php';
 require_once 'inc/comments.php';
 
 function agencia_icon(string $name): string

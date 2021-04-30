@@ -37,7 +37,8 @@ add_action('init', function () {
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
         'menu_icon' => 'dashicons-admin-multisite',
         'menu_position' => 3,
-        'taxonomies' => ['property_type', 'property_city', 'property_option']
+        'taxonomies' => ['property_type', 'property_city', 'property_option'],
+        'has_archive' => true
     ]);
     register_taxonomy('property_type', 'property', [
         'meta_box_cb' => 'post_categories_meta_box',
@@ -124,9 +125,9 @@ register_deactivation_hook(__FILE__, 'flush_rewrite_rules');
  *
  * @return void
  */
-function agence_city(?WP_Post $post=null): void
+function agence_city(?WP_Post $post = null): void
 {
-    if($post === null){
+    if ($post === null) {
         $post = get_post();
     }
     $cities = get_the_terms($post, 'property_city');
@@ -135,6 +136,6 @@ function agence_city(?WP_Post $post=null): void
     }
     $city = $cities[0];
     echo $city->name;
-    $postalCode = get_field('postal_code',$city);
+    $postalCode = get_field('postal_code', $city);
     echo ' (' . $postalCode . ')';
 }
