@@ -89,6 +89,27 @@
             "min": "",
             "max": "",
             "step": ""
+        },
+        {
+            "key": "field_608b9565b27ad",
+            "label": "Chambre",
+            "name": "rooms",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         }
     ],
     "location": [
@@ -108,5 +129,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1619727157
+    "modified": 1619760509
 }
