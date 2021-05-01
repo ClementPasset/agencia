@@ -32,3 +32,12 @@ add_action('pre_get_posts', function (WP_Query $query): void {
 add_action('init', function () {
     add_rewrite_rule('property/(buy|rent)/?$', 'index.php?post_type=property&property_category=$matches[1]', 'top');
 });
+
+function agence_is_rent_url(string $url): bool
+{
+    return strpos($url, 'property/rent');
+}
+function agence_is_buy_url(string $url): bool
+{
+    return strpos($url, 'property/buy');
+}
