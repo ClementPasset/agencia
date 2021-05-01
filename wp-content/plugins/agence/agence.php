@@ -4,6 +4,7 @@
  * Plugin Name: Agence Plugin
  * Description: Plugin to manage the properties of the agency.
  */
+defined("ABSPATH") or die();
 add_action('init', function () {
     register_post_type('property', [
         'label' => __('Properties', 'agence'),
@@ -115,6 +116,8 @@ add_action('init', function () {
 
 register_activation_hook(__FILE__, 'flush_rewrite_rules');
 register_deactivation_hook(__FILE__, 'flush_rewrite_rules');
+
+require_once 'query.php';
 
 /**
  * Method agence_city
