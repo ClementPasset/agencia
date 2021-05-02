@@ -1,38 +1,47 @@
 <?php get_header() ?>
-
+<?php
+$isRent = get_query_var('property_category', 'buy') === 'rent';
+$cities = get_terms([
+    'taxonomy' => 'property_city'
+]);
+$types = get_terms([
+    'taxonomy' => 'property_type'
+]);
+$currentCity = get_query_var('city', null);
+$currentPrice = get_query_var('price', null);
+$currentType = get_query_var('property_type', null);
+$currentRooms = get_query_var('rooms', null);
+?>
 <div class="container page-properties">
     <div class="search-form">
         <h1 class="search-form__title">Agence immo Montpellier</h1>
         <p>Retrouver tous nos biens sur le secteur de <strong>Montpellier</strong></p>
         <hr>
-        <form action="listing.html" class="search-form__form">
-            <div class="search-form__checkbox">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" checked="" type="radio" name="type" id="buy" value="buy">
-                    <label class="form-check-label" for="buy">Acheter</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type" id="rent" value="rent">
-                    <label class="form-check-label" for="rent">Louer</label>
-                </div>
-            </div>
+        <form action="" class="search-form__form">
             <div class="form-group">
-                <input type="text" class="form-control" id="city" placeholder="Montpellier">
+                <select name="city" id="city" class="form-control">
+                    <option value=""><?= __('All cities','agencia') ?></option>
+                    <?php foreach ($cities as $city) : ?>
+                        <option value="<?= $city->slug ?>" <?= selected($city->slug, $currentCity) ?>><?= $city->name ?></option>
+                    <?php endforeach ?>
+                </select>
                 <label for="city">Ville</label>
             </div>
             <div class="form-group">
-                <input type="number" class="form-control" id="budget" placeholder="100 000 €">
+                <input type="number" class="form-control" id="budget" name="price" placeholder="100 000 €" value="<?= esc_attr($currentPrice) ?>">
                 <label for="budget">Prix max</label>
             </div>
             <div class="form-group">
-                <select name="kind" id="kind" class="form-control">
-                    <option value="flat">Appartement</option>
-                    <option value="villa">Villa</option>
+                <select name="property_type" id="property_type" class="form-control">
+                    <option value=""><?= __('All types', 'agencia') ?></option>
+                    <?php foreach ($types as $type) : ?>
+                        <option value="<?= $type->slug ?>" <?= selected($type->slug, $currentType) ?>><?= $type->name ?></option>
+                    <?php endforeach ?>
                 </select>
-                <label for="kind">Type</label>
+                <label for="property_type">Type</label>
             </div>
             <div class="form-group">
-                <input type="number" class="form-control" id="rooms" placeholder="4">
+                <input type="number" class="form-control" id="rooms" name="rooms" placeholder="4" value="<?= esc_attr($currentRooms) ?>">
                 <label for="rooms">Pièces</label>
             </div>
             <button type="submit" class="btn btn-filled">Rechercher</button>
@@ -52,7 +61,7 @@
                 <h3 class="property__title"><?= esc_html(get_the_title() . " - " . get_field('surface') . "m²") ?></h3>
                 <div class="property__price">
                     <?php if (get_field('property_category') === 'buy') {
-                        echo sprintf('%s $', get_field('price'));
+                        echo sprintf('%s $', number_format(get_field('price'),2,',',' '));
                     } else {
                         echo sprintf('%s $/month', get_field('price'));
                     }

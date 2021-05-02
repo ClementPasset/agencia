@@ -7,8 +7,12 @@ add_filter('nav_menu_css_class', function (array $classes, WP_Post $item): array
         $classes = array_filter($classes, function ($class) {
             return $class !== 'current_page_parent';
         });
+    }if(is_post_type_archive('property')){
+        global $wp;
+        if($wp->request === trim($item->url,'/')){
+            $classes[]='current_page_parent';
+        }
     }
-
     if (is_singular('property')) {
         $property = get_queried_object();
         $category = get_field('property_category', $property);
@@ -21,6 +25,5 @@ add_filter('nav_menu_css_class', function (array $classes, WP_Post $item): array
             $classes[] = 'current_page_parent';
         }
     }
-
     return $classes;
 }, 10, 2);
