@@ -6,4 +6,6 @@ add_action('after_setup_theme', function () {
     add_image_size('property_carousel', 777, 444, true);
     add_image_size('property_thumbnail', 385, 220, true);
     add_image_size('property_thumbnail_large', 802, 220, true);
+    add_image_size('highlighted_property', 790, 728, true);
+    add_image_size('post_thumbnail_home', 910, 910, true);
 });

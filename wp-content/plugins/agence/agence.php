@@ -39,7 +39,8 @@ add_action('init', function () {
         'menu_icon' => 'dashicons-admin-multisite',
         'menu_position' => 3,
         'taxonomies' => ['property_type', 'property_city', 'property_option'],
-        'has_archive' => true
+        'has_archive' => true,
+        'exclude_from_search'=>true
     ]);
     register_taxonomy('property_type', 'property', [
         'meta_box_cb' => 'post_categories_meta_box',
@@ -118,6 +119,7 @@ register_activation_hook(__FILE__, 'flush_rewrite_rules');
 register_deactivation_hook(__FILE__, 'flush_rewrite_rules');
 
 require_once 'query.php';
+require_once 'rewrite.php';
 
 /**
  * Method agence_city
