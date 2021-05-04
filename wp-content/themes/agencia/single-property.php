@@ -16,33 +16,20 @@
             ?>
           </div>
         </div>
-        <div class="bien__actions">
-          <button class="btn btn-filled">Contacter l'agence</button>
+        <div class="bien__actions" id="bien-actions">
+          <button class="btn btn-filled" id="bien-contact">Contacter l'agence</button>
           <button class="btn">Appeler</button>
         </div>
 
-        <!--
-        <form action="" class="bien__form form-2column">
-          <div class="form-group">
-            <input type="text" id="username" class="form-control">
-            <label for="username">Pseudo</label>
-          </div>
-          <div class="form-group">
-            <input type="text" id="email" class="form-control">
-            <label for="email">Email</label>
-          </div>
-          <textarea placeholder="Message" class="form-control full"></textarea>
-          <button type="submit" class="btn">Commenter</button>
-        </form>
-        -->
-
+        <div class="hidden" id="bien-form">
+            <?= do_shortcode('[contact-form-7 id="117" titlr="" html_class="bien__form form-2column"]'); ?>
+        </div>
 
       </div>
       <div>
         <div class="bien__photos js-slider">
 
           <?php foreach (get_attached_media('image', get_post()) as $image) : ?>
-
             <a href="<?= wp_get_attachment_image_url($image->ID) ?>">
               <img class="bien__photo" src="<?= wp_get_attachment_image_url($image->ID, 'property_carousel') ?>" alt="">
             </a>
